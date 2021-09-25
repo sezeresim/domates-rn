@@ -45,6 +45,7 @@ const TabNavigator = () => (
 const styles = StyleSheet.create({
   buttons: {
     paddingTop: 6,
+    marginBottom: 12,
   },
 });
 
