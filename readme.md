@@ -2,7 +2,9 @@
 
 Domates is a pomodoro timer.
 
-![alt text](https://github.com/sezeresim/domates-rn/blob/master/assets/ss1.png)
+<img src="./assets/ss1.png" width="200" >
+<img src="./assets/ss2.png" width="200">
+<img src="./assets/ss3.png" width="200">
 
 ## Tech Stack
 
