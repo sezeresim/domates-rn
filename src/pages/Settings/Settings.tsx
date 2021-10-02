@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {changeTheme, changeVibration} from '../../store/settings/actions';
 import {RootState} from '../../store/store';
 import styles from './Settings.styles';
+import {SafeAreaView} from 'react-native';
 
 const Settings: React.FC = () => {
   const {isDark, isVibration} = useSelector(
@@ -19,35 +20,37 @@ const Settings: React.FC = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   return (
-    <Layout style={styles.layout}>
+    <SafeAreaView style={styles.safeArea}>
       <TopNavigation
         alignment="center"
         title={'Settings'}
         subtitle={'App Settings'}
       />
-      <Divider />
-      <Layout
-        style={[styles.card, {borderBottomColor: theme['border-basic-100']}]}>
-        <Layout>
-          <Text>{'Dark Theme'}</Text>
+      <Layout style={styles.layout}>
+        <Divider />
+        <Layout
+          style={[styles.card, {borderBottomColor: theme['border-basic-100']}]}>
+          <Layout>
+            <Text>{'Dark Theme'}</Text>
+          </Layout>
+          <Layout>
+            <Toggle checked={isDark} onChange={() => dispatch(changeTheme())} />
+          </Layout>
         </Layout>
-        <Layout>
-          <Toggle checked={isDark} onChange={() => dispatch(changeTheme())} />
+        <Layout
+          style={[styles.card, {borderBottomColor: theme['border-basic-100']}]}>
+          <Layout>
+            <Text>{'Vibration'}</Text>
+          </Layout>
+          <Layout>
+            <Toggle
+              checked={isVibration}
+              onChange={() => dispatch(changeVibration())}
+            />
+          </Layout>
         </Layout>
       </Layout>
-      <Layout
-        style={[styles.card, {borderBottomColor: theme['border-basic-100']}]}>
-        <Layout>
-          <Text>{'Vibration'}</Text>
-        </Layout>
-        <Layout>
-          <Toggle
-            checked={isVibration}
-            onChange={() => dispatch(changeVibration())}
-          />
-        </Layout>
-      </Layout>
-    </Layout>
+    </SafeAreaView>
   );
 };
 
